@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/ryanpbrown2002/serverMidterm#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "express-session": "^1.18.2",
+    "hbs": "^4.2.0"
   }
 }
