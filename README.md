@@ -18,7 +18,7 @@ Users can register accounts, login, and make comments on the forum.
 
 
 ## Project Structure
-
+```
 wild-west-forum/
 ├── backend/                 # Express.js backend container
 │   ├── Dockerfile
@@ -30,19 +30,27 @@ wild-west-forum/
 │   └── public/              # Static HTML/CSS/JS files
 ├── docker-compose.yml       # Production configuration
 └── README.md
-
+```
 
 ## Setup Instructions
 
 1. Clone the repository
+   ```
    git clone https://github.com/ryanpbrown2002/serverMidterm>
    cd wild-west-forum
+   ```
 
 2. Start the application
+   ```
    docker compose up -d
+   ```
 
 3. Verify containers are running
+   ```
    docker compose ps
+   ```
 
 4. Access the application
+   ```
    Open your browser to http://your-server-ip
+   ```
