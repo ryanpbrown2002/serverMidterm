@@ -4,6 +4,10 @@ const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// In-memory data storage
+const users = [];
+const comments = [];
+
 // Set up Handlebars
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
