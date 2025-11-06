@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const hbs = require('hbs');
 const session = require('express-session');
 const app = express();
