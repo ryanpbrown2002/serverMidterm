@@ -13,6 +13,7 @@ html {
 body {
     font-family: 'Georgia', 'Times New Roman', serif;
     background: linear-gradient(to bottom, #f4e4bc 0%, #d4c5a0 100%);
+    background-attachment: fixed;
     color: #3d2817;
     min-height: 100vh;
     line-height: 1.6;
@@ -130,8 +131,8 @@ nav a:hover {
 main {
     width: 50%;
     max-width: 1200px;
-    margin: 1.5rem auto;
-    padding: 1.5rem;
+    margin: 1rem auto;
+    padding: 1.25rem;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -148,6 +149,176 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     border-bottom: 3px solid #8b4513;
     padding-bottom: 0.4rem;
+}
+
+/* Homepage Styles */
+.home-hero {
+    text-align: center;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+.home-hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    padding-bottom: 0;
+    color: #8b4513;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tagline {
+    font-size: 1.3rem;
+    color: #a0522d;
+    font-weight: bold;
+    font-style: italic;
+    margin: 0.25rem 0;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #6b3410;
+    margin-top: 0.25rem;
+    font-style: italic;
+}
+
+.welcome-section {
+    margin-top: 1rem;
+}
+
+.welcome-card {
+    background: linear-gradient(135deg, rgba(244, 228, 188, 0.8) 0%, rgba(212, 197, 160, 0.8) 100%);
+    border: 2px solid #8b4513;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.welcome-card h2 {
+    color: #8b4513;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-card p {
+    font-size: 1rem;
+    color: #3d2817;
+    margin: 0.25rem 0;
+}
+
+.action-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.action-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 3px solid #8b4513;
+    border-radius: 12px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.action-card:hover::before {
+    left: 100%;
+}
+
+.action-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    border-width: 4px;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.action-card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.action-card.primary {
+    background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+    border-color: #6b3410;
+    color: #f4e4bc;
+}
+
+.action-card.primary:hover {
+    background: linear-gradient(135deg, #a0522d 0%, #8b4513 100%);
+    border-color: #8b4513;
+}
+
+.action-card.secondary {
+    background: linear-gradient(135deg, #d4c5a0 0%, #f4e4bc 100%);
+    border-color: #8b4513;
+    color: #3d2817;
+}
+
+.action-card.secondary:hover {
+    background: linear-gradient(135deg, #f4e4bc 0%, #d4c5a0 100%);
+}
+
+.action-card.tertiary {
+    background: linear-gradient(135deg, #f4e4bc 0%, #e8d5b7 100%);
+    border-color: #a0522d;
+    color: #3d2817;
+}
+
+.action-card.tertiary:hover {
+    background: linear-gradient(135deg, #e8d5b7 0%, #f4e4bc 100%);
+}
+
+
+.action-card h3 {
+    color: inherit;
+    font-size: 1.2rem;
+    margin: 0.25rem 0;
+    text-shadow: none;
+    border: none;
+    padding: 0;
+}
+
+.action-card.primary h3 {
+    color: #f4e4bc;
+}
+
+.action-card p {
+    color: inherit;
+    font-size: 0.85rem;
+    margin: 0.25rem 0 0 0;
+    opacity: 0.9;
+}
+
+.action-card.primary p {
+    color: #f4e4bc;
 }
 
 h2 {
@@ -293,6 +464,62 @@ footer p {
     
     h1 {
         font-size: 2rem;
+    }
+    
+    .home-hero {
+        padding: 0.75rem 0;
+        margin-bottom: 0.75rem;
+    }
+    
+    .home-hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .tagline {
+        font-size: 1.1rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .welcome-section {
+        margin-top: 0.75rem;
+    }
+    
+    .welcome-card {
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .welcome-card h2 {
+        font-size: 1.3rem;
+    }
+    
+    .welcome-card p {
+        font-size: 0.9rem;
+    }
+    
+    .action-cards {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+    }
+    
+    .action-card {
+        padding: 1rem 0.75rem;
+    }
+    
+    .card-icon {
+        font-size: 2rem;
+    }
+    
+    .action-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .action-card p {
+        font-size: 0.8rem;
     }
     
     footer {

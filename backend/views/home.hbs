@@ -1,11 +1,55 @@
-<h1>Welcome to Wild West Forum</h1>
-<p>The most insecure forum on the web!</p>
+<div class="home-hero">
+    <h1>🤠 Welcome to Wild West Forum 🤠</h1>
+    <p class="tagline">The most insecure forum on the web!</p>
+    <p class="subtitle">Where outlaws gather to share their thoughts, no questions asked.</p>
+</div>
 
 {{#if user}}
-    <p>Welcome back, {{user}}! Ready to post some comments?</p>
-    <a href="/comment/new">Create a New Comment</a>
+    <div class="welcome-section">
+        <div class="welcome-card">
+            <h2>Howdy, {{user}}!</h2>
+            <p>Ready to rustle up some comments? Saddle up and share your thoughts with the community!</p>
+        </div>
+        
+        <div class="action-cards">
+            <a href="/comment/new" class="action-card primary">
+                <div class="card-icon">✍️</div>
+                <h3>Post Comment</h3>
+                <p>Share your thoughts with the community</p>
+            </a>
+            
+            <a href="/comments" class="action-card secondary">
+                <div class="card-icon">💬</div>
+                <h3>View Comments</h3>
+                <p>See what others are saying</p>
+            </a>
+        </div>
+    </div>
 {{else}}
-    <p>Please <a href="/register">register</a> or <a href="/login">login</a> to participate.</p>
+    <div class="welcome-section">
+        <div class="welcome-card">
+            <h2>Join the Posse!</h2>
+            <p>Become part of the Wild West Forum community. Register or login to start sharing your thoughts with fellow outlaws.</p>
+        </div>
+        
+        <div class="action-cards">
+            <a href="/login" class="action-card primary">
+                <div class="card-icon">🔐</div>
+                <h3>Login</h3>
+                <p>Return to your account</p>
+            </a>
+            
+            <a href="/register" class="action-card secondary">
+                <div class="card-icon">📝</div>
+                <h3>Register</h3>
+                <p>Create a new account</p>
+            </a>
+            
+            <a href="/comments" class="action-card tertiary">
+                <div class="card-icon">👀</div>
+                <h3>Browse Comments</h3>
+                <p>View without logging in</p>
+            </a>
+        </div>
+    </div>
 {{/if}}
-
-<a href="/comments">View All Comments</a>
