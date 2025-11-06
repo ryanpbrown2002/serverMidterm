@@ -31,15 +31,18 @@ app.use(session({
     cookie: { secure: false }     // Intentionally insecure (no HTTPS required)
 }));
 
+// Serve static files (CSS, JS, images)
+app.use(express.static('public'));
+
 
 // API Routes
 // Note: We don't include '/api' in our routes because nginx strips it when forwarding
 // nginx receives: http://localhost/api/users
 // nginx forwards to: http://backend-nodejs:3000/users (without /api)
 app.get('/', (req, res) => {
-    res.json({ 
-        message: 'Hello from the API!',
-        timestamp: new Date().toISOString()
+    res.render('home',{ 
+        layout: 'views/layouts/main.hbs',
+        user: req.session.username
     });
 });
 

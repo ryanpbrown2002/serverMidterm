@@ -21,13 +21,16 @@ Users can register accounts, login, and make comments on the forum.
 ```
 wild-west-forum/
 ├── backend/                 # Express.js backend container
+│   ├── public/              # Serve static files
+│   ├── views/
+│   │   ├── layouts/
+│   │   └── partials/ 
 │   ├── Dockerfile
 │   ├── package.json
-│   └── server.js
+│   └── server.js           
 ├── nginx/                   # nginx reverse proxy container
 │   ├── Dockerfile
-│   ├── default.conf
-│   └── public/              # Static HTML/CSS/JS files
+│   └── default.conf
 ├── docker-compose.yml       # Production configuration
 └── README.md
 ```
@@ -53,4 +56,9 @@ wild-west-forum/
 4. Access the application
    ```
    Open your browser to http://your-server-ip
+   ```
+
+5. Close application (optional) 
+   ```
+   docker compose down
    ```
