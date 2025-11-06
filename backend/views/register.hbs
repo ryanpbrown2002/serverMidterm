@@ -1,0 +1,20 @@
+<h1>Register for Wild West Forum</h1>
+
+{{#if error}}
+    <div style="background: #ffcccc; border: 2px solid #ff0000; padding: 1rem; border-radius: 5px; margin: 1rem 0; color: #8b0000;">
+        <strong>Error:</strong> {{error}}
+    </div>
+{{/if}}
+
+<form action="/register" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    
+    <button type="submit">Register</button>
+</form>
+
+<p>Already have an account? <a href="/login">Login here</a></p>
+

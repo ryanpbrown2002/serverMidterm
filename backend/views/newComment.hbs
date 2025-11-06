@@ -1,0 +1,19 @@
+<h1>Create New Comment</h1>
+
+{{#if error}}
+    <div style="background: #ffcccc; border: 2px solid #ff0000; padding: 1rem; border-radius: 5px; margin: 1rem 0; color: #8b0000;">
+        <strong>Error:</strong> {{error}}
+    </div>
+{{/if}}
+
+<form action="/comment" method="POST">
+    <label for="text">Your Comment:</label>
+    <textarea id="text" name="text" rows="6" required placeholder="Share your thoughts..."></textarea>
+    
+    <button type="submit">Post Comment</button>
+</form>
+
+<div style="margin-top: 1.5rem;">
+    <a href="/comments">← Back to All Comments</a>
+</div>
+

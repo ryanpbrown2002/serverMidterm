@@ -1,0 +1,32 @@
+<h1>All Comments</h1>
+
+{{#if comments.length}}
+    <div style="margin-top: 2rem;">
+        {{#each comments}}
+            <div style="background: #f9f9f9; border: 2px solid #8b4513; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                <div style="font-weight: bold; color: #8b4513; margin-bottom: 0.5rem;">
+                    <strong>Author:</strong> {{this.author}}
+                </div>
+                <div style="color: #3d2817; margin-bottom: 0.5rem; white-space: pre-wrap;">{{this.text}}</div>
+                <div style="font-size: 0.9rem; color: #666; font-style: italic;">
+                    Posted: {{this.createdAt}}
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{else}}
+    <p style="font-style: italic; color: #666;">No comments yet. Be the first to <a href="/comment/new">post a comment</a>!</p>
+{{/if}}
+
+{{#if user}}
+    <div style="margin-top: 2rem;">
+        <a href="/comment/new">
+            <button>Create New Comment</button>
+        </a>
+    </div>
+{{else}}
+    <div style="margin-top: 2rem;">
+        <p>Want to post a comment? <a href="/login">Login</a> or <a href="/register">register</a> first!</p>
+    </div>
+{{/if}}
+

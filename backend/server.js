@@ -36,15 +36,147 @@ app.use(session({
 app.use(express.static('public'));
 
 
-// API Routes
-// Note: We don't include '/api' in our routes because nginx strips it when forwarding
-// nginx receives: http://localhost/api/users
-// nginx forwards to: http://backend-nodejs:3000/users (without /api)
+// Helper function to check if user is logged in
+const isLoggedIn = (req) => {
+    return req.session && req.session.username;
+};
+
+// GET Routes
 app.get('/', (req, res) => {
-    res.render('home',{ 
+    res.render('home', { 
         layout: 'layouts/main',
         user: req.session.username
     });
+});
+
+app.get('/register', (req, res) => {
+    res.render('register', {
+        layout: 'layouts/main',
+        user: req.session.username,
+        error: null
+    });
+});
+
+app.get('/login', (req, res) => {
+    res.render('login', {
+        layout: 'layouts/main',
+        user: req.session.username,
+        error: null
+    });
+});
+
+app.get('/comments', (req, res) => {
+    res.render('comments', {
+        layout: 'layouts/main',
+        user: req.session.username,
+        comments: comments
+    });
+});
+
+app.get('/comment/new', (req, res) => {
+    // If user is not logged in, show login form instead
+    if (!isLoggedIn(req)) {
+        return res.render('login', {
+            layout: 'layouts/main',
+            user: null,
+            error: 'Please login to create a comment.'
+        });
+    }
+    
+    res.render('newComment', {
+        layout: 'layouts/main',
+        user: req.session.username,
+        error: null
+    });
+});
+
+// POST Routes
+app.post('/register', (req, res) => {
+    const { username, password } = req.body;
+    
+    // Check if username is already taken
+    const existingUser = users.find(u => u.username === username);
+    if (existingUser) {
+        return res.render('register', {
+            layout: 'layouts/main',
+            user: req.session.username,
+            error: 'Username is already taken. Please choose another.'
+        });
+    }
+    
+    // Create new user
+    if (username && password) {
+        users.push({ username, password });
+        // Auto-login after registration
+        req.session.username = username;
+        req.session.loggedIn = true;
+        res.redirect('/');
+    } else {
+        res.render('register', {
+            layout: 'layouts/main',
+            user: req.session.username,
+            error: 'Username and password are required.'
+        });
+    }
+});
+
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    
+    // Find user
+    const user = users.find(u => u.username === username && u.password === password);
+    
+    if (user) {
+        // Set session
+        req.session.username = username;
+        req.session.loggedIn = true;
+        res.redirect('/');
+    } else {
+        res.render('login', {
+            layout: 'layouts/main',
+            user: null,
+            error: 'Invalid username or password.'
+        });
+    }
+});
+
+app.post('/logout', (req, res) => {
+    // Clear session
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error destroying session:', err);
+        }
+        res.redirect('/');
+    });
+});
+
+app.post('/comment', (req, res) => {
+    // Check if user is logged in
+    if (!isLoggedIn(req)) {
+        return res.render('login', {
+            layout: 'layouts/main',
+            user: null,
+            error: 'Please login to create a comment.'
+        });
+    }
+    
+    const { text } = req.body;
+    
+    if (text && text.trim()) {
+        // Store comment with author and text
+        comments.push({
+            author: req.session.username,
+            text: text.trim(),
+            createdAt: new Date().toISOString()
+        });
+        res.redirect('/comments');
+    } else {
+        res.render('newComment', {
+            layout: 'layouts/main',
+            user: req.session.username,
+            error: 'Comment text is required.'
+        });
+    }
 });
 
 app.get('/health', (req, res) => {
