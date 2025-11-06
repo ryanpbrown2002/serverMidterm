@@ -1,0 +1,11 @@
+<h1>Welcome to Wild West Forum</h1>
+<p>The most insecure forum on the web!</p>
+
+{{#if user}}
+    <p>Welcome back, {{user}}! Ready to post some comments?</p>
+    <a href="/comment/new">Create a New Comment</a>
+{{else}}
+    <p>Please <a href="/register">register</a> or <a href="/login">login</a> to participate.</p>
+{{/if}}
+
+<a href="/comments">View All Comments</a>

@@ -1,0 +1,20 @@
+<nav>
+    <div class="nav-container">
+        <a href="/">Wild West Forum</a>
+        
+        <div class="nav-links">
+            <a href="/comments">All Comments</a>
+            
+            {{#if user}}
+                <span>Howdy, {{user}}!</span>
+                <a href="/comment/new">New Comment</a>
+                <form action="/logout" method="POST" style="display: inline;">
+                    <button type="submit">Logout</button>
+                </form>
+            {{else}}
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            {{/if}}
+        </div>
+    </div>
+</nav>

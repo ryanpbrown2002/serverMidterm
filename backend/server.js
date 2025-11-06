@@ -42,7 +42,7 @@ app.use(express.static('public'));
 // nginx forwards to: http://backend-nodejs:3000/users (without /api)
 app.get('/', (req, res) => {
     res.render('home',{ 
-        layout: 'views/layouts/main.hbs',
+        layout: 'layouts/main',
         user: req.session.username
     });
 });
